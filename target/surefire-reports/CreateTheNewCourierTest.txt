@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: CreateTheNewCourierTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 6.958 s <<< FAILURE! - in CreateTheNewCourierTest
+createNewCourierForCode(CreateTheNewCourierTest)  Time elapsed: 0.689 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <201> but was <409>.
+
+	at CreateTheNewCourierTest.createNewCourierForCode(CreateTheNewCourierTest.java:35)
+
