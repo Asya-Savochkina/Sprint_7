@@ -1,6 +1,6 @@
 package testdata;
 import org.apache.commons.lang3.RandomStringUtils;
-import objects.NewCourier;
+import model.NewCourier;
 
 public class CourierTestData {
     private static final String LOGIN = RandomStringUtils.randomAlphanumeric(5);

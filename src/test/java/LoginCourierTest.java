@@ -3,10 +3,11 @@ import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.AfterClass;
 import org.junit.Test;
-import objects.NewCourier;
-import objects.LoginForCourier;
+import model.NewCourier;
+import model.LoginForCourier;
+import testdata.CourierTestData;
 import testdata.LoginTestData;
-import static SetUp.SetUp.getBaseUri;
+import static config.Config.getBaseUri;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
@@ -20,8 +21,7 @@ public class LoginCourierTest {
 
     @AfterClass
     public static void setId() {
-
-        LoginForCourier loginForCourier = LoginTestData.from(getCourierRequestAllRequiredField());
+        LoginForCourier loginForCourier = LoginTestData.correctLogin(CourierTestData.getCourierRequestAllRequiredField());
 
         int id = given()
                 .header("Content-type", "application/json")
@@ -42,7 +42,6 @@ public class LoginCourierTest {
                 .delete("courier/" + id);
     }
 
-
     @Test
     @DisplayName("Авторизация курьера с корректной связкой логин-пароль")
     @Description("Проверяем возможность успешно авторизоваться с корректной связкой логин-пароль, ожидаем код 200 и возвращается ID")
@@ -55,7 +54,7 @@ public class LoginCourierTest {
                 .body(newCourier)
                 .post(COURIER);
 
-        LoginForCourier loginForCourier = LoginTestData.from(newCourier);
+        LoginForCourier loginForCourier = LoginTestData.correctLogin(CourierTestData.getCourierRequestAllRequiredField());
 
         Response response = given()
                 .header("Content-type", "application/json")
@@ -66,7 +65,6 @@ public class LoginCourierTest {
                 .statusCode(200)
                 .and()
                 .assertThat().body("id", notNullValue());
-
     }
 
     @Test
@@ -81,7 +79,6 @@ public class LoginCourierTest {
         response.then().statusCode(404)
                 .and()
                 .assertThat().body("message", equalTo("Учетная запись не найдена"));
-
     }
 
     @Test
@@ -96,6 +93,5 @@ public class LoginCourierTest {
         response.then().statusCode(400)
                 .and()
                 .assertThat().body("message", equalTo("Недостаточно данных для входа"));
-
     }
 }

@@ -1,6 +1,6 @@
 package testdata;
 import org.apache.commons.lang3.RandomStringUtils;
-import objects.NewOrder;
+import model.NewOrder;
 
 public class OrderTestData {
     public static final String FIRST_NAME = RandomStringUtils.randomAlphanumeric(6);
@@ -12,8 +12,7 @@ public class OrderTestData {
     public static final String DELIVERY_DATE = "2022-10-31";
     public static final String COMMENT = "Позвонить за час";
 
-
-    public static NewOrder getOrderRequestAllField(){
+    public static NewOrder createNewOrder(String[] color) {
         NewOrder newOrder = new NewOrder();
         newOrder.setFirstName(FIRST_NAME);
         newOrder.setLastName(LAST_NAME);
@@ -23,6 +22,7 @@ public class OrderTestData {
         newOrder.setRentTime(RENT_TIME);
         newOrder.setDeliveryDate(DELIVERY_DATE);
         newOrder.setComment(COMMENT);
+        newOrder.setColor(color);
         return newOrder;
     }
 }

@@ -1,15 +1,17 @@
-package objects;
+package model;
+
+import org.apache.commons.lang3.RandomStringUtils;
 
 public class NewOrder {
-    private String firstName;
-    private String lastName;
-    private String address;
-    private String metroStation;
-    private String phone;
-    private int rentTime;
-    private String deliveryDate;
-    private String comment;
-    private String[] color;
+    public static String firstName;
+    public static String lastName;
+    public static String address;
+    public static String metroStation;
+    public static String phone;
+    public static int rentTime;
+    public static String deliveryDate;
+    public static String comment;
+    public static String[] color;
 
     public String getFirstName() {
         return firstName;
@@ -75,11 +77,6 @@ public class NewOrder {
         this.comment = comment;
     }
 
-    public String[] getColor() {
-        return color;
-    }
-
-    public void setColor(String[] color) {
-        this.color = color;
-    }
+    public String[] getColor() { return color; }
+    public void setColor(String[] color) { this.color = color;}
 }
